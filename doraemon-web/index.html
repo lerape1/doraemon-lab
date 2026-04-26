@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字档案：大雄的房间</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="room-container">
+    
+<div class="grid-item closet" onclick="window.location.href='archive.html'">
+      <div class="label">NO.01 / ARCHIVE</div>
+      <h2>道具百科</h2>
+    </div>
+
+    <div class="grid-item desk" onclick="window.location.href='about.html'">
+      <div class="label">NO.02 / SYSTEM</div>
+      <h2>关于本站</h2>
+    </div>
+
+    <div class="grid-item door-container" onclick="openDoor()">
+      <div class="door-frame">
+        <div class="door-wing"></div>
+      </div>
+      <div class="door-label">点击开启</div>
+    </div>
+
+  </div>
+
+  <div id="blessing-modal" class="modal">
+    <div class="modal-glass">
+      <div class="char-avatar" id="char-img"></div> 
+      <h3 id="char-name">角色名</h3>
+      <p id="char-quote">“祝福语”</p>
+      <button class="close-btn" onclick="closeDoor()">收下祝福</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

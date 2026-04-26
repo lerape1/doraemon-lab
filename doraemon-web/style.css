@@ -1,0 +1,149 @@
+/* 基础重置与高级感字体 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  /* 1. 引入大合照背景图 */
+  background: 
+    /* 这里的线性渐变相当于给图片盖了一层“磨砂半透明纸”，防止背景太花 */
+    linear-gradient(rgba(232, 241, 248, 0.8), rgba(232, 241, 248, 0.8)), 
+    url('background.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 让背景固定，不随页面滚动（虽然咱们页面不长） */
+
+  /* 以下保持不变 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #3D5A80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* 为了让背景的人物隐约可见又不干扰视线，你可以给 body 增加一点模糊感（可选） */
+/* 注意：如果加了模糊，会让边缘有点白边，通常上面的渐变遮罩就足够高级了 */
+
+/* 核心：CSS Grid 房间布局 */
+/* =========================================
+   核心：底部悬浮小卡片组 (Dock 风格排版)
+   ========================================= */
+.room-container {
+  position: absolute;
+  bottom: 6vh; /* 沉底，距离屏幕底部留一点呼吸空间 */
+  display: flex; /* 改为弹性布局，让卡片乖乖并排居中 */
+  justify-content: center;
+  gap: 20px; /* 卡片之间的间距 */
+  width: 100%;
+}
+
+/* 统一的卡片高级感风格 (迷你版) */
+.grid-item {
+  width: 160px; /* 固定精致宽度 */
+  height: 220px; /* 固定小巧高度 */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 15px 30px rgba(61, 90, 128, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; /* 文字全部居中对齐 */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* 悬停时的悬浮弹跳动效 */
+.grid-item:hover { 
+  transform: translateY(-12px); 
+  box-shadow: 0 25px 45px rgba(61, 90, 128, 0.3);
+}
+
+/* 缩小卡片里的文字尺寸 */
+.label { font-size: 10px; letter-spacing: 1px; margin-bottom: 8px; z-index: 2; }
+.grid-item h2 { font-size: 16px; margin: 0; z-index: 2; }
+
+/* =========================================
+   任意门专属样式 (等比例缩小)
+   ========================================= */
+.door-container { justify-content: flex-end; background: transparent; box-shadow: none; border: none; backdrop-filter: none; }
+.door-frame {
+  width: 70px; /* 门框变细 */
+  height: 110px; /* 门框变矮 */
+  border: 3px solid #3D5A80;
+  border-radius: 4px;
+  position: relative;
+  perspective: 1000px; 
+  margin-bottom: 10px;
+}
+.door-wing {
+  width: 100%;
+  height: 100%;
+  background-color: #F28482; 
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.door-container:hover .door-wing { transform: rotateY(-15deg); }
+.door-label { font-weight: bold; font-size: 13px; color: #3D5A80; }
+/* 磨砂玻璃弹窗 (Glassmorphism) */
+.modal {
+  display: none; /* 默认隐藏 */
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(232, 241, 248, 0.6);
+  backdrop-filter: blur(12px); /* 核心模糊代码 */
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.modal-glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.char-avatar { width: 100px; height: 100px; background: #D9E2EC; border-radius: 50%; margin: 0 auto 20px; }
+.close-btn {
+  margin-top: 30px; padding: 10px 30px; border: none; border-radius: 30px;
+  background: #3D5A80; color: white; cursor: pointer; font-size: 14px;
+}
+/* =========================================
+   新增：板块图片背景与高级渐变遮罩 (竹蜻蜓 & 百宝袋版本)
+   ========================================= */
+
+/* 1. 道具百科 (竹蜻蜓) */
+.closet {
+  background-image: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0) 60%), url('copter.png');
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF; 
+}
+.closet .label { 
+  color: #CBD5E1; 
+} 
+
+/* 2. 关于本站 (百宝袋) */
+.desk {
+  background-image: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0) 60%), url('pocket.png');
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+}
+.desk .label { 
+  color: #CBD5E1; 
+}
+
+/* 3. 任意门 (门板) */
+.door-wing {
+  background-image: url('door.png'); 
+  background-size: cover;
+  background-position: center;
+}
