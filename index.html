@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哆啦A梦秘密道具研究所 | 22nd Century Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f9ff; }
+        .dora-blue { background-color: #00A0E9; }
+        .dora-red { background-color: #E60012; }
+        .dora-font { font-family: 'ZCOOL KuaiLe', cursive; }
+        .gadget-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="dora-blue p-4 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold dora-font tracking-wider">Doraemon Lab 🤖</h1>
+            <div class="space-x-6">
+                <a href="#" class="hover:underline">道具百科</a>
+                <a href="#" class="hover:underline">机械分析</a>
+                <a href="#" class="hover:underline">关于本站</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white py-16 px-4 text-center border-b-4 border-yellow-400">
+        <h2 class="text-4xl font-extrabold text-blue-600 mb-4 dora-font">欢迎来到 22 世纪秘密道具研究所</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mb-8">在这里，我们不仅讨论道具的奇妙，更尝试用现代工程学去解析它们的可能性。</p>
+        <button onclick="drawGadget()" class="dora-red text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-600 transition">
+            随机从口袋里掏一个道具！
+        </button>
+        <div id="lucky-result" class="mt-6 text-xl font-bold text-blue-500 min-h-[32px]"></div>
+    </header>
+
+    <main class="container mx-auto py-12 px-4">
+        
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-8 border-l-8 border-blue-500 pl-4">近期收录道具</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="gadget-card bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-400">
+                    <div class="text-4xl mb-4">🚪</div>
+                    <h4 class="text-xl font-bold mb-2">任意门</h4>
+                    <p class="text-gray-500 text-sm italic mb-4">初次登场：《大雄的海底鬼岩城》等</p>
+                    <p class="text-gray-600">只需心中想着想去的地方，跨过门槛即可到达。内置全球地图映射系统。</p>
+                </div>
+                <div class="gadget-card bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-400">
+                    <div class="text-4xl mb-4">🚁</div>
+                    <h4 class="text-xl font-bold mb-2">竹蜻蜓</h4>
+                    <p class="text-gray-500 text-sm italic mb-4">最常用的飞行道具</p>
+                    <p class="text-gray-600">通过反重力装置实现飞行，最高时速 80km/h，连续使用寿命约 4 小时。</p>
+                </div>
+                <div class="gadget-card bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-400">
+                    <div class="text-4xl mb-4">⏳</div>
+                    <h4 class="text-xl font-bold mb-2">时光机</h4>
+                    <p class="text-gray-600">连接过去与未来的航具，入口通常隐藏在大雄书桌的抽屉里。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-blue-50 p-8 rounded-2xl border-2 border-dashed border-blue-300">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="mr-2">⚙️</span> 硬核专栏：秘密道具的材料学分析
+            </h3>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h5 class="font-bold text-blue-700 mb-2">● 哆啦A梦的皮肤材质猜想</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        由于哆啦A梦完全不怕严寒酷暑，且具有“极高的防御力”，我们推测其皮肤采用了某种高级**纳米陶瓷复合材料**，具备极低的导热系数和极高的韧性，同时具有自清洁功能。
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h5 class="font-bold text-blue-700 mb-2">● 竹蜻蜓的自由度控制</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        从机械原理看，竹蜻蜓仅靠头部吸盘连接。它可能利用了**电磁感应或超导锁定**技术，在维持 6 个自由度的灵活性的同时，保证了极高的连接强度，避免飞着飞着“人机分离”。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <style>
+    /* 1. 整体容器样式 */
+    .doraemon-section {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 40px 20px;
+        background: #fdfdfd;
+        font-family: "Microsoft YaHei", sans-serif;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+        text-align: center;
+        color: #00A0E9; /* 哆啦A梦蓝 */
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    /* 2. 核心卡片网格布局 */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+
+    /* 3. 单个卡片样式 */
+    .character-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        position: relative;
+    }
+
+    .character-card:hover {
+        transform: translateY(-10px);
+        border-color: #00A0E9;
+        box-shadow: 0 15px 30px rgba(0,160,233,0.2);
+    }
+
+    /* 角色图标占位（之后可以换成图片） */
+    .char-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .char-name {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .char-desc {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .char-tag {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 3px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    /* 4. 剧场版列表样式（简约风） */
+    .movie-section {
+        background: #f0faff;
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .movie-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .movie-item {
+        background: #fff;
+        padding: 12px 15px;
+        border-radius: 8px;
+        border-left: 4px solid #00A0E9;
+        font-size: 0.9rem;
+    }
+</style>
+
+<section class="doraemon-section">
+    <h2 class="section-title">🌟 哆啦A梦人物图鉴</h2>
+
+    <div class="card-grid">
+        <article class="character-card">
+            <span class="char-icon">🐱</span>
+            <h3 class="char-name">哆啦A梦</h3>
+            <p class="char-desc">来自22世纪的猫型机器人，拥有神奇的四次元口袋，是大雄最可靠的伙伴。</p>
+            <span class="char-tag" style="background: #e1f5fe; color: #01579b;">主角 / 道具大师</span>
+        </article>
+
+        <article class="character-card">
+            <span class="char-icon">👓</span>
+            <h3 class="char-name">野比大雄</h3>
+            <p class="char-desc">虽然性格软弱、成绩一般，但心地极度善良，擅长射击和翻绳。</p>
+            <span class="char-tag" style="background: #fffde7; color: #f57f17;">主角 / 善良之星</span>
+        </article>
+
+        <article class="character-card">
+            <span class="char-icon">🛁</span>
+            <h3 class="char-name">源静香</h3>
+            <p class="char-desc">聪明善良、爱护环境，每天要洗三次澡。是团队中的温润力量。</p>
+            <span class="char-tag" style="background: #fce4ec; color: #c2185b;">主角 / 优等生</span>
+        </article>
+
+        <article class="character-card">
+            <span class="char-icon">🎤</span>
+            <h3 class="char-name">刚田武 (胖虎)</h3>
+            <p class="char-desc">力量担当，梦想是成为歌星。虽然爱欺负人，但在剧场版里极具正义感。</p>
+            <span class="char-tag" style="background: #efebe9; color: #4e342e;">力量 / 义气</span>
+        </article>
+
+        <article class="character-card">
+            <span class="char-icon">🗼</span>
+            <h3 class="char-name">骨川小夫</h3>
+            <p class="char-desc">家境富裕，自尊心强。虽然爱炫耀，但擅长机械操作，头脑非常灵活。</p>
+            <span class="char-tag" style="background: #e8f5e9; color: #2e7d32;">技术 / 富二代</span>
+        </article>
+    </div>
+
+    <div class="movie-section">
+        <h3 style="margin-top: 0; color: #01579b;">🎬 剧场版经典客串</h3>
+        <ul class="movie-list">
+            <li class="movie-item"><b>皮助</b> - 《大雄的恐龙》<br><small>跨越时空的成长羁绊</small></li>
+            <li class="movie-item"><b>帕比</b> - 《宇宙小战争》<br><small>微小身体里的巨大勇气</small></li>
+            <li class="movie-item"><b>露卡</b> - 《月球探测记》<br><small>月球背后的超能力友谊</small></li>
+            <li class="movie-item"><b>库库鲁</b> - 《日本诞生》<br><small>远古少年的冒险史诗</small></li>
+        </ul>
+    </div>
+</section>
+
+    <footer class="bg-gray-100 py-8 text-center text-gray-500 text-sm">
+        <p>© 2026 哆啦A梦秘密道具研究所 - 粉丝学习交流作品</p>
+        <p class="mt-2">“人的想象力，就是未来。” —— 藤子·F·不二雄</p>
+    </footer>
+
+    <script>
+        const gadgets = ["时光包袱皮", "翻译蒟蒻", "记忆面包", "缩放灯", "穿透环", "如果电话亭", "倒地杀手"];
+        function drawGadget() {
+            const resultDiv = document.getElementById('lucky-result');
+            resultDiv.innerText = "正在翻找口袋...";
+            setTimeout(() => {
+                const randomGadget = gadgets[Math.floor(Math.random() * gadgets.length)];
+                resultDiv.innerText = `恭喜你抽到了：✨ ${randomGadget} ✨`;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
